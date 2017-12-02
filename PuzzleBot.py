@@ -4,10 +4,13 @@ def Main():
 
     n = 4
     zero_loc = (0,0)
+    ordered_array = []
 
-    #solved_tile_map = np.matrix('1, 2, 3; 4, 5, 6; 7, 8, 9')
+    def generate_order():
+        for x in range(0,n*n):
+            ordered_array.append(x)
 
-    def rand_puzzle_generator():
+    def generate_puzzle():
         rands = np.random.choice(n*n, (n*n), replace = False)
         empty_tile = np.empty([n,n])
 
@@ -29,10 +32,17 @@ def Main():
                     zero_loc = (x, y)
                     #print('success', zero_x, zero_y)
 
+    def find_number():
+        for x in range(0,n):
+            for y in range(0,n):
+                if puzzle[x,y] == number:
+                    number_loc = (x,y)
 
 
-    puzzle = rand_puzzle_generator()
+    puzzle = generate_puzzle()
     find_blank()
+    generate_order()
+    print(ordered_array)
     #blank_loc = find_blank()
 
 
