@@ -3,7 +3,6 @@ import numpy as np
 def Main():
 
     n = 4
-    zero_loc = (0,0)
     ordered_array = []
 
     def generate_order():
@@ -29,21 +28,38 @@ def Main():
                 #print('cord', x, y)
                 #print('val', puzzle[x,y])
                 if puzzle[x,y] == 0:
-                    zero_loc = (x, y)
-                    #print('success', zero_x, zero_y)
+                    loc = (x, y)
+                    return loc
 
-    def find_number():
+    def find_number(number):
         for x in range(0,n):
             for y in range(0,n):
                 if puzzle[x,y] == number:
-                    number_loc = (x,y)
+                    loc = (x,y)
+                    return loc
+
+    def trade_up():
+        number_loc = find_number(9)
+        blank_loc = find_blank()
+        print(number_loc, blank_loc)
+        if number_loc[0] == blank_loc[0]:
+            print(number_loc, blank_loc)
+            holding_loc = number_loc
+            puzzle[number_loc] = puzzle[blank_loc]
+            puzzle[blank_loc] = puzzle[holding_loc]
+            print(number_loc, blank_loc, holding_loc)
+        else: print('error')
+
+    #def trade_down():
+    #def trade_left():
+    #def trade_right():
 
 
     puzzle = generate_puzzle()
     find_blank()
     generate_order()
-    print(ordered_array)
-    #blank_loc = find_blank()
+    trade_up()
+    print(puzzle)
 
 
 Main()
