@@ -5,11 +5,11 @@ def Main():
     n = 4
     ordered_array = []
 
-    def generate_order():
+    def generate_order():   #generate a random N length array
         for x in range(0,n*n):
             ordered_array.append(x)
 
-    def generate_puzzle():
+    def generate_puzzle():  #populate an NxN matrix with randomized array
         rands = np.random.choice(n*n, (n*n), replace = False)
         empty_tile = np.empty([n,n])
 
@@ -19,10 +19,10 @@ def Main():
                 rands = np.delete(rands,0)
                 #print(rands)
 
-        print(empty_tile)
+        print(empty_tile)   #print the original random matrix
         return(empty_tile)
 
-    def find_blank():
+    def find_blank():       #locate the coordinates of the 0 tile (to be blank)
         for x in range(0,n):
             for y in range(0,n):
                 #print('cord', x, y)
@@ -31,7 +31,7 @@ def Main():
                     loc = (x, y)
                     return loc
 
-    def find_number(number):
+    def find_number(number):    #return location of a desired number
         for x in range(0,n):
             for y in range(0,n):
                 if puzzle[x,y] == number:
@@ -41,9 +41,10 @@ def Main():
     def trade_up():
         number_loc = find_number(9)
         blank_loc = find_blank()
-        print(number_loc, blank_loc)
-        if number_loc[0] == blank_loc[0]:
-            print(number_loc, blank_loc)
+        #print(number_loc, blank_loc)
+        print(number_loc[0], (blank_loc[0]-1))
+        if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]-1):
+            print(number_loc[0], (blank_loc[0]-1))
             holding_loc = number_loc
             puzzle[number_loc] = puzzle[blank_loc]
             puzzle[blank_loc] = puzzle[holding_loc]
