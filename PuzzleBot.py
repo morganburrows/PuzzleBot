@@ -38,30 +38,59 @@ def Main():
                     loc = (x,y)
                     return loc
 
-    def trade_up():
+    def trade_up():     #swaps the blank tile with the one above it
         number_loc = find_number(9)
         blank_loc = find_blank()
-        #print(number_loc, blank_loc)
-        #print(number_loc[0], (blank_loc[0]-1))
         if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]-1):
-            print(blank_loc, puzzle[blank_loc])
             holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
             puzzle[blank_loc] = holding_val
             blank_loc = find_blank()
-            print(blank_loc, puzzle[blank_loc])
-
+            print('traded up')
         else: print('error')
 
-    #def trade_down():
-    #def trade_left():
-    #def trade_right():
+    def trade_down():
+        number_loc = find_number(9)
+        blank_loc = find_blank()
+        if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]+1):
+            holding_val = puzzle[number_loc]
+            puzzle[number_loc] = puzzle[blank_loc]
+            puzzle[blank_loc] = holding_val
+            blank_loc = find_blank()
+            print('traded down')
+        else: print('error')
+
+    def trade_left():
+        number_loc = find_number(9)
+        blank_loc = find_blank()
+        if (number_loc[1]+1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
+            holding_val = puzzle[number_loc]
+            puzzle[number_loc] = puzzle[blank_loc]
+            puzzle[blank_loc] = holding_val
+            blank_loc = find_blank()
+            print('traded left')
+        else: print('error')
+
+    def trade_right():
+        number_loc = find_number(9)
+        blank_loc = find_blank()
+        if (number_loc[1]-1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
+            holding_val = puzzle[number_loc]
+            puzzle[number_loc] = puzzle[blank_loc]
+            puzzle[blank_loc] = holding_val
+            blank_loc = find_blank()
+            print('traded right')
+        else: print('error')
 
 
     puzzle = generate_puzzle()
     find_blank()
     generate_order()
-    trade_up()
+    #trade_up()
+    #trade_down()
+    #trade_left()
+    #trade_right()
+
     print(puzzle)
 
 
