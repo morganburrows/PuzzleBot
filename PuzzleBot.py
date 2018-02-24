@@ -42,13 +42,15 @@ def Main():
         number_loc = find_number(9)
         blank_loc = find_blank()
         #print(number_loc, blank_loc)
-        print(number_loc[0], (blank_loc[0]-1))
+        #print(number_loc[0], (blank_loc[0]-1))
         if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]-1):
-            print(number_loc[0], (blank_loc[0]-1))
-            holding_loc = number_loc
+            print(blank_loc, puzzle[blank_loc])
+            holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
-            puzzle[blank_loc] = puzzle[holding_loc]
-            print(number_loc, blank_loc, holding_loc)
+            puzzle[blank_loc] = holding_val
+            blank_loc = find_blank()
+            print(blank_loc, puzzle[blank_loc])
+
         else: print('error')
 
     #def trade_down():
