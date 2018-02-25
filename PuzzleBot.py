@@ -41,7 +41,6 @@ def Main():
     def trade_up():     #swaps the blank tile with the one above it
         blank_loc = find_blank()
         number_loc = (blank_loc[0]-1, (blank_loc[1]))
-
         if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]-1):
             holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
@@ -64,25 +63,27 @@ def Main():
         else: print('error')
 
     def trade_left():   #swaps the blank tile with the one left of it
-        number_loc = find_number()
         blank_loc = find_blank()
+        number_loc = (blank_loc[0], blank_loc[1]-1)
         if (number_loc[1]+1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
             holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
             puzzle[blank_loc] = holding_val
             blank_loc = find_blank()
             print('traded left')
+            print(puzzle)
         else: print('error')
 
     def trade_right():  #swaps the blank tile with the one right of it
-        number_loc = find_number()
         blank_loc = find_blank()
+        number_loc = (blank_loc[0], blank_loc[1]+1)
         if (number_loc[1]-1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
             holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
             puzzle[blank_loc] = holding_val
             blank_loc = find_blank()
             print('traded right')
+            print(puzzle)
         else: print('error')
 
     puzzle = generate_puzzle()
