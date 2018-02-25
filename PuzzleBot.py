@@ -12,7 +12,7 @@ def Main():
 
     def generate_ordered():
         answer_key = list(range(n*n))
-        print(answer_key)
+        #print(answer_key)
 
     def generate_puzzle():  #populate an NxN matrix with randomized array
         rands = np.random.choice(n*n, (n*n), replace = False)
@@ -20,9 +20,9 @@ def Main():
 
         for x in range(0,n):
             for y in range(0,n):
+                #print(rands)
                 empty_tile[x,y] = rands[0]
                 rands = np.delete(rands,0)
-                #print(rands)
 
         print(empty_tile)   #print the original random matrix
         return(empty_tile)
@@ -100,7 +100,7 @@ def Main():
     find_blank()
     generate_rand()
     generate_ordered()
-    running = False
+    running = True
 
     while running:
         key_in = input('Puzz:')
