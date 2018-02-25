@@ -39,29 +39,32 @@ def Main():
                     return loc
 
     def trade_up():     #swaps the blank tile with the one above it
-        number_loc = find_number(9)
         blank_loc = find_blank()
+        number_loc = (blank_loc[0]-1, (blank_loc[1]))
+
         if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]-1):
             holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
             puzzle[blank_loc] = holding_val
             blank_loc = find_blank()
             print('traded up')
+            print(puzzle)
         else: print('error')
 
-    def trade_down():
-        number_loc = find_number(9)
+    def trade_down():   #swaps the blank tile with the one below it
         blank_loc = find_blank()
-        if number_loc[1] == blank_loc[1] and number_loc[0] == (blank_loc[0]+1):
+        number_loc = ((blank_loc[0]+1),blank_loc[1])
+        if (number_loc[1] == blank_loc[1]) and (number_loc[0] == (blank_loc[0]+1)):
             holding_val = puzzle[number_loc]
             puzzle[number_loc] = puzzle[blank_loc]
             puzzle[blank_loc] = holding_val
             blank_loc = find_blank()
             print('traded down')
+            print(puzzle)
         else: print('error')
 
-    def trade_left():
-        number_loc = find_number(9)
+    def trade_left():   #swaps the blank tile with the one left of it
+        number_loc = find_number()
         blank_loc = find_blank()
         if (number_loc[1]+1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
             holding_val = puzzle[number_loc]
@@ -71,8 +74,8 @@ def Main():
             print('traded left')
         else: print('error')
 
-    def trade_right():
-        number_loc = find_number(9)
+    def trade_right():  #swaps the blank tile with the one right of it
+        number_loc = find_number()
         blank_loc = find_blank()
         if (number_loc[1]-1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
             holding_val = puzzle[number_loc]
@@ -82,10 +85,28 @@ def Main():
             print('traded right')
         else: print('error')
 
-
     puzzle = generate_puzzle()
     find_blank()
     generate_order()
+    running = True
+
+    while running:
+        key_in = input('Puzz:')
+        if key_in == "quit":
+            break
+        elif key_in == 'w':
+            trade_up()
+        elif key_in == 's':
+            trade_down()
+        elif key_in == 'a':
+            trade_left()
+        elif key_in == 'd':
+            trade_right()
+
+        print(key_in)
+
+
+
     #trade_up()
     #trade_down()
     #trade_left()
