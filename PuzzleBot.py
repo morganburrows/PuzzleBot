@@ -3,11 +3,16 @@ import numpy as np
 def Main():
 
     n = 4
+    rand_array = []
     ordered_array = []
 
-    def generate_order():   #generate a random N length array
+    def generate_rand():   #generate a random N length array
         for x in range(0,n*n):
-            ordered_array.append(x)
+            rand_array.append(x)
+
+    def generate_ordered():
+        answer_key = list(range(n*n))
+        print(answer_key)
 
     def generate_puzzle():  #populate an NxN matrix with randomized array
         rands = np.random.choice(n*n, (n*n), replace = False)
@@ -56,7 +61,6 @@ def Main():
         number_loc = ((blank_loc[0]+1),blank_loc[1])
         if blank_loc[0]+1 != n:
             if (number_loc[1] == blank_loc[1]) and (number_loc[0] == (blank_loc[0]+1)):
-                print('down shit')
                 holding_val = puzzle[number_loc]
                 puzzle[number_loc] = puzzle[blank_loc]
                 puzzle[blank_loc] = holding_val
@@ -94,8 +98,9 @@ def Main():
 
     puzzle = generate_puzzle()
     find_blank()
-    generate_order()
-    running = True
+    generate_rand()
+    generate_ordered()
+    running = False
 
     while running:
         key_in = input('Puzz:')
@@ -110,7 +115,7 @@ def Main():
         elif key_in == 'd':
             trade_right()
 
-        print(key_in)
+        #print(key_in)
 
 
 
