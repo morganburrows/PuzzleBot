@@ -4,17 +4,14 @@ def Main():
 
     n = 4
     rand_array = []
-    ordered_array = []
+    ordered_array = list(range(1,n*n))
+    ordered_array.append(0)
+    #print(ordered_array)
 
 
     def generate_rand():   #generate a random NxN length array
         for x in range(0,n*n):
             rand_array.append(x)
-
-    def generate_ordered():
-        ordered_array = list(range(1,n*n))
-        ordered_array.append(0)
-        #print(ordered_array)
 
     def generate_puzzle():  #populate an NxN matrix with randomized array
         rands = np.random.choice(n*n, (n*n), replace = False)
@@ -89,7 +86,6 @@ def Main():
         number_loc = (blank_loc[0], blank_loc[1]+1)
         if blank_loc[1]+1 != n:
             if (number_loc[1]-1) == blank_loc[1] and number_loc[0] == blank_loc[0]:
-                print('right shit')
                 holding_val = puzzle[number_loc]
                 puzzle[number_loc] = puzzle[blank_loc]
                 puzzle[blank_loc] = holding_val
@@ -101,14 +97,15 @@ def Main():
     def check_solved():
         for x in range(0,n):
             for y in range(0,n):
-                print(puzzle[x[y]])
-                #print(ordered_array[])
+                if puzzle[x,y] == ordered_array[x+y]:
+                    print(puzzle[x,y], ordered_array[x+y])
+
 
     #process execution order
     puzzle = generate_puzzle()
     find_blank()
-    generate_rand()
-    generate_ordered()
+    #generate_rand()
+    #generate_ordered()
     running = True
 
     while running:
