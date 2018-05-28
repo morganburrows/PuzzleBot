@@ -11,7 +11,8 @@ def Main():
             rand_array.append(x)
 
     def generate_ordered():
-        answer_key = list(range(n*n))
+        answer_key = list(range(1,n*n))
+        answer_key.append(0)
         #print(answer_key)
 
     def generate_puzzle():  #populate an NxN matrix with randomized array
@@ -97,7 +98,8 @@ def Main():
         print(puzzle)
 
     #todo: win condition
-    
+    #def check_solved(): # checks after every move for win condition (ordered array)
+
 
     #process execution order
     puzzle = generate_puzzle()
