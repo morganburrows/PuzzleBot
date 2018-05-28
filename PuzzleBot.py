@@ -6,14 +6,15 @@ def Main():
     rand_array = []
     ordered_array = []
 
+
     def generate_rand():   #generate a random NxN length array
         for x in range(0,n*n):
             rand_array.append(x)
 
     def generate_ordered():
-        answer_key = list(range(1,n*n))
-        answer_key.append(0)
-        #print(answer_key)
+        ordered_array = list(range(1,n*n))
+        ordered_array.append(0)
+        #print(ordered_array)
 
     def generate_puzzle():  #populate an NxN matrix with randomized array
         rands = np.random.choice(n*n, (n*n), replace = False)
@@ -97,11 +98,11 @@ def Main():
         else: print('error - out of bounds')
         print(puzzle)
 
-    def check_solved():{
+    def check_solved():
         for x in range(0,n):
             for y in range(0,n):
-                print(puzzle[x,y], answer_key[x+y])
-    }
+                print(puzzle[x[y]])
+                #print(ordered_array[])
 
     #process execution order
     puzzle = generate_puzzle()
