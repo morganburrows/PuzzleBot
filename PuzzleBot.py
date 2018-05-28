@@ -6,7 +6,7 @@ def Main():
     rand_array = []
     ordered_array = []
 
-    def generate_rand():   #generate a random N length array
+    def generate_rand():   #generate a random NxN length array
         for x in range(0,n*n):
             rand_array.append(x)
 
@@ -21,7 +21,7 @@ def Main():
 
         for x in range(0,n):
             for y in range(0,n):
-                ''#print(rands)
+                #print(rands)
                 empty_tile[x,y] = rands[0]
                 rands = np.delete(rands,0)
 
@@ -97,9 +97,11 @@ def Main():
         else: print('error - out of bounds')
         print(puzzle)
 
-    #todo: win condition
-    #def check_solved(): # checks after every move for win condition (ordered array)
-
+    def check_solved():{
+        for x in range(0,n):
+            for y in range(0,n):
+                print(puzzle[x,y], answer_key[x+y])
+    }
 
     #process execution order
     puzzle = generate_puzzle()
@@ -120,6 +122,7 @@ def Main():
             trade_left()
         elif key_in == 'd':
             trade_right()
+        check_solved()
 
     #begin algorithm
 
