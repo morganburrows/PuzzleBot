@@ -97,8 +97,10 @@ def Main():
     def check_solved():
         for x in range(0,n):
             for y in range(0,n):
-                if puzzle[x,y] == ordered_array[x+y]:
-                    print(puzzle[x,y], ordered_array[x+y])
+                if puzzle[x,y] != ordered_array[x+y]:
+                    break
+                    #print(puzzle[x,y], ordered_array[x+y])
+                else:print('winner')
 
 
     #process execution order
