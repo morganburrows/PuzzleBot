@@ -20,7 +20,7 @@ def Main():
 
         for x in range(0,n):
             for y in range(0,n):
-                #print(rands)
+                ''#print(rands)
                 empty_tile[x,y] = rands[0]
                 rands = np.delete(rands,0)
 
@@ -96,6 +96,10 @@ def Main():
         else: print('error - out of bounds')
         print(puzzle)
 
+    #todo: win condition
+    
+
+    #process execution order
     puzzle = generate_puzzle()
     find_blank()
     generate_rand()
@@ -115,16 +119,12 @@ def Main():
         elif key_in == 'd':
             trade_right()
 
-        #print(key_in)
+    #begin algorithm
 
-
-
-    #trade_up()
-    #trade_down()
-    #trade_left()
-    #trade_right()
-
-    #print(puzzle)
-
+    #process: order array from lowest to highest
+    #method: 0 is blank space, ignore in ordering.
+    #space can be thought of as 2x2 and 2x4/4x2 "circular" sets of 4 and 8 respectively
+    #goal of a "reorder" should be to rotate the circular set to bring the smallest number
+    #in the set to the desired position.
 
 Main()
