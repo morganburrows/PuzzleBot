@@ -95,12 +95,14 @@ def Main():
         print(puzzle)
 
     def check_solved():
+        a = 0
         for x in range(0,n):
             for y in range(0,n):
-                if puzzle[x,y] != ordered_array[x+y]:
-                    break
-                    #print(puzzle[x,y], ordered_array[x+y])
-                else:print('winner')
+                print(puzzle[x,y], ordered_array[a])
+                #if puzzle[x%n,y] != ordered_array[x]:
+                #    print('no match')
+                #else:print('winner')
+                a += 1
 
 
     #process execution order
@@ -122,6 +124,8 @@ def Main():
             trade_left()
         elif key_in == 'd':
             trade_right()
+        elif key_in == '':
+            print(puzzle)
         check_solved()
 
     #begin algorithm
