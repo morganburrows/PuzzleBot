@@ -2,7 +2,7 @@ import numpy as np
 
 def Main():
 
-    n = 4
+    n = 3
     rand_array = []
     ordered_array = list(range(1,n*n))
     ordered_array.append(0)
@@ -98,11 +98,11 @@ def Main():
         a = 0
         for x in range(0,n):
             for y in range(0,n):
-                print(puzzle[x,y], ordered_array[a])
-                #if puzzle[x%n,y] != ordered_array[x]:
-                #    print('no match')
-                #else:print('winner')
-                a += 1
+                if puzzle[x,y] != ordered_array[a]:
+                    return False
+                else: a += 1
+        if a == n*n:
+            return True
 
 
     #process execution order
@@ -111,6 +111,7 @@ def Main():
     #generate_rand()
     #generate_ordered()
     running = True
+    solved = False
 
     while running:
         key_in = input('Puzz:')
@@ -126,7 +127,9 @@ def Main():
             trade_right()
         elif key_in == '':
             print(puzzle)
-        check_solved()
+        if check_solved() == True:
+            print('PUZZLE SOLVED')
+            break
 
     #begin algorithm
 
