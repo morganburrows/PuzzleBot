@@ -2,7 +2,7 @@ import numpy as np
 
 def Main():
 
-    n = 3
+    n = 4
     rand_array = []
     ordered_array = list(range(1,n*n))
     ordered_array.append(0)
@@ -111,7 +111,6 @@ def Main():
     #generate_rand()
     #generate_ordered()
     running = True
-    solved = False
 
     while running:
         key_in = input('Puzz:')
