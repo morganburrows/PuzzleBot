@@ -9,10 +9,6 @@ def Main():
     #print(ordered_array)
 
 
-    def generate_rand():   #generate a random NxN length array
-        for x in range(0,n*n):
-            rand_array.append(x)
-
     def generate_puzzle():  #populate an NxN matrix with randomized array
         rands = np.random.choice(n*n, (n*n), replace = False)
         empty_tile = np.empty([n,n])
@@ -108,8 +104,6 @@ def Main():
     #process execution order
     puzzle = generate_puzzle()
     find_blank()
-    #generate_rand()
-    #generate_ordered()
     running = True
 
     while running:
