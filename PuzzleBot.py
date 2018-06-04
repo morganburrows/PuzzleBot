@@ -120,9 +120,14 @@ def Main():
             trade_right()
         elif key_in == '':
             print(puzzle)
-        if check_solved() == True:
+        if check_solved() == True or key_in == 'winstate':
             print('PUZZLE SOLVED')
-            break
+            key_in = input('PLAY AGAIN? (Y/N)\n')
+            if key_in == "Y" or key_in == "y":
+                puzzle  = generate_puzzle()
+            elif key_in == "N" or key_in == "n":
+                print('Thanks For Playing!')
+                break
 
     #begin algorithm
 
