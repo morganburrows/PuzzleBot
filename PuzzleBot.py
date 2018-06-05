@@ -90,7 +90,7 @@ def Main():
         else: print('error - out of bounds')
         print(puzzle)
 
-    def check_solved():
+    def check_solved(): #checks puzzle against ordered NxN array
         a = 0
         for x in range(0,n):
             for y in range(0,n):
@@ -100,12 +100,30 @@ def Main():
         if a == n*n:
             return True
 
+    #begin algorithm
+
+    #process: order array from lowest to highest
+    #method: 0 is blank space, ignore in ordering.
+    #space can be thought of as 2x2 and 2x4/4x2 "circular" sets of 4 and 8 respectively
+    #goal of a "reorder" should be to rotate the circular set to bring the smallest number
+    #in the set to the desired position.
+
+    def puzzle_bot():
+        #first order of business: make bot bring 1 to position 1
+        for current_number in range (1,n*n):
+            for x in range(0,n):
+                for y in range(0,n):
+                    if puzzle[x,y] == current_number:
+                        loc = puzzle[x,y]
+                        print(loc)
+
 
     #process execution order
     puzzle = generate_puzzle()
     find_blank()
-    running = True
+    puzzle_bot()
 
+    running = False
     while running:
         key_in = input('Puzz:')
         if key_in == "quit":
@@ -129,12 +147,6 @@ def Main():
                 print('Thanks For Playing!')
                 break
 
-    #begin algorithm
 
-    #process: order array from lowest to highest
-    #method: 0 is blank space, ignore in ordering.
-    #space can be thought of as 2x2 and 2x4/4x2 "circular" sets of 4 and 8 respectively
-    #goal of a "reorder" should be to rotate the circular set to bring the smallest number
-    #in the set to the desired position.
 
 Main()
