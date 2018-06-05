@@ -117,6 +117,9 @@ def Main():
                     for y in range(0,n):
                         print('searching for', current_number)
                         if puzzle[x,y] == current_number:
+                            #
+                            #solving to be done here
+                            #
                             loc = puzzle[x,y]
                             print('-----> solved for', loc)
                             solved = True
@@ -126,11 +129,16 @@ def Main():
                     break
                     #print('break failed')
 
+    def pbot():
+        for number in range(1,n*n):
+            location = find_number(number)
+            print(location)
+
 
     #process execution order
     puzzle = generate_puzzle()
     find_blank()
-    puzzle_bot()
+    pbot()
 
     running = False
     while running:
