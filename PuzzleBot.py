@@ -111,11 +111,20 @@ def Main():
     def puzzle_bot():
         #first order of business: make bot bring 1 to position 1
         for current_number in range (1,n*n):
+            solved = False
             for x in range(0,n):
-                for y in range(0,n):
-                    if puzzle[x,y] == current_number:
-                        loc = puzzle[x,y]
-                        print(loc)
+                if solved == False:
+                    for y in range(0,n):
+                        print('searching for', current_number)
+                        if puzzle[x,y] == current_number:
+                            loc = puzzle[x,y]
+                            print('-----> solved for', loc)
+                            solved = True
+                            break
+                elif solved == True:
+                    solved = False
+                    break
+                    #print('break failed')
 
 
     #process execution order
