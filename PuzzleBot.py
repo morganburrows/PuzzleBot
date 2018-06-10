@@ -117,10 +117,10 @@ def Main():
                     for y in range(0,n):
                         print('searching for', current_number)
                         if puzzle[x,y] == current_number:
-                            #
-                            #solving to be done here
-                            #
                             loc = puzzle[x,y]
+                            #
+                            make_ordered(current_number, (x,y), ordered_array)
+                            #
                             print('-----> solved for', loc)
                             solved = True
                             break
@@ -132,13 +132,21 @@ def Main():
     def pbot():
         for number in range(1,n*n):
             location = find_number(number)
-            print(location)
+            print(location, puzzle[location])
+
+    def make_ordered(current_number, location, key_array):
+        print(current_number, location, key_array[current_number-1])
+        if current_number == 1:
+            print('bring up')
+            print('bring left')
+
+
 
 
     #process execution order
     puzzle = generate_puzzle()
     find_blank()
-    pbot()
+    puzzle_bot()
 
     running = False
     while running:
